@@ -1,6 +1,7 @@
 import { AxiosAdapter } from './adapters/http.adapter';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { PaginationDto } from './dto/pagination.dto';
 
 @Injectable()
 export class CommitService {
@@ -12,8 +13,11 @@ export class CommitService {
     this.gitHubRepoUrl = configService.getOrThrow('gitHubRepoUrl');
   }
 
-  async getCommits() {
-    const data = await this.http.get(this.gitHubRepoUrl);
+  async getCommits(paginationDto: PaginationDto) {
+    const { per_page = 5, page = 1 } = paginationDto;
+    const data = await this.http.get(
+      this.gitHubRepoUrl + `?per_page=${per_page}&page=${page}`,
+    );
     const response = data.map((commitElement) => {
       const { sha, commit } = commitElement;
       return {
