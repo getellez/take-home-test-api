@@ -13,13 +13,22 @@ You need to have some applications installed on your machine so that you can run
 * Node.js
 * NPM (Node Package Manager)
 * NestJS CLI
+* Git
 
 ### Nest.js
+<hr>
+
 Since this project is built with NestJS you want to install the Nest CLI
 ```
 npm i -g @nestjs/cli
 ```
+### Clone
+<hr>
 
+Clone this repository in your computer using the Git command:
+```
+git clone https://github.com/getellez/take-home-test-api.git
+```
 ### Environment Variables
 <hr>
 
@@ -42,6 +51,7 @@ npm run start:dev
 
 ### Tests
 <hr>
+
 One of the things we can do to ensure the quality of the code of this project or have an idea of how this project works is run the tests:
 
 ```
